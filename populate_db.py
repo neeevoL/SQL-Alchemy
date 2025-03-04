@@ -8,9 +8,9 @@ engine = sqlalchemy.create_engine('sqlite+pysqlite:///pupils.sqlite')
 with (orm.Session(engine)) as session:
 
     #create houses
-    h1 = model.House(name="Northgate")
-    h2 = model.House(name="Southgate")
-    h3 = model.House(name="Queensgate")
+    h1 = model.House(house_name="Northgate")
+    h2 = model.House(house_name="Southgate")
+    h3 = model.House(house_name="Queensgate")
 
     # add houses to session (db)
 
@@ -20,10 +20,10 @@ with (orm.Session(engine)) as session:
 
 
     # create pupil as objects - these are records
-    pupil_Th = model.Pupil(first_name = 'Teo', last_name = 'Hadjiniklov')
-    pupil_Rc = model.Pupil(first_name='Ryan', last_name='Chan')
-    pupil_Lk = model.Pupil(first_name='Loveen', last_name='Kishore')
-    pupils.Ad = model.Pupil(first_name='Arthur', last_name='Dunno')
+    pupil_Th = model.Pupil(first_name = 'Teo', last_name = 'Hadjiniklov', house = h1)
+    pupil_Rc = model.Pupil(first_name='Ryan', last_name='Chan', house = h2)
+    pupil_Lk = model.Pupil(first_name='Loveen', last_name='Kishore', house = h1)
+    pupil_Ad = model.Pupil(first_name='Arthur', last_name='Dunno', house = h3)
 
     # add pupils to session (db)
     session.add(pupil_Th)

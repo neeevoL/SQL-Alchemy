@@ -16,14 +16,13 @@ class Pupil(Base):
     last_name: orm.Mapped[str] = orm.mapped_column()
 
     house_id: orm.Mapped[int] = orm.mapped_column(sqlalchemy.ForeignKey('house.house_id'), init=False, repr = False)
-    house: orm.Mapped['House']=orm.relationship(default = None, back_populates='pupil')
+    house: orm.Mapped['House']=orm.relationship(default = None, back_populates='pupils')
 
-# Makes house projects
+# Makes house objects
 class House(Base):
     __tablename__ = 'house'
 
     # time to create fields
     house_id: orm.Mapped[int] = orm.mapped_column(init = False, primary_key=True, repr = False) # (repr = False) so house ID isnt shown
     house_name: orm.Mapped[str] = orm.mapped_column()
-    house_num_pupils: orm.Mapped[int] = orm.mapped_column()
-    pupils = orm.Mapped[list[Pupil]]=orm.relationship(default_factory = list, back_populates='house', repr = False)
+    pupils: orm.Mapped[list[Pupil]]=orm.relationship(default_factory = list, back_populates='house', repr = False)
