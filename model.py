@@ -15,11 +15,15 @@ class Pupil(Base):
     first_name: orm.Mapped[str] = orm.mapped_column()
     last_name: orm.Mapped[str] = orm.mapped_column()
 
+    house_id: orm.Mapped[int] = orm.mapped_column(sqlalchemy.ForeignKey('house.house_id'), init=False, repr = False)
+    house: orm.Mapped['House']=orm.relationship(default = None, back_populates='pupil')
+
 # Makes house projects
 class House(Base):
     __tablename__ = 'house'
 
     # time to create fields
-    house_id: orm.Mapped[int] = orm.mapped_column(init = False, primary_key=True, repr = False) # (repr = False) so house ID doesn't look like house positions
+    house_id: orm.Mapped[int] = orm.mapped_column(init = False, primary_key=True, repr = False) # (repr = False) so house ID isnt shown
     house_name: orm.Mapped[str] = orm.mapped_column()
     house_num_pupils: orm.Mapped[int] = orm.mapped_column()
+    pupils = orm.Mapped[list[Pupil]]=orm.relationship(default_factory = list, back_populates='house', repr = False)
