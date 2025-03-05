@@ -15,4 +15,6 @@ with (orm.Session(engine)) as session:
 
     print("All the houses")
     houses = session.query(model.House).all()
+    for house in houses:
+        print(house.house_name)
 
