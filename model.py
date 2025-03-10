@@ -28,20 +28,20 @@ class House(Base):
     # time to create fields
     house_id: orm.Mapped[int] = orm.mapped_column(init = False, primary_key=True, repr = False) # (repr = False) so house ID isnt shown
     house_name: orm.Mapped[str] = orm.mapped_column()
-    pupils: orm.Mapped[list[Pupil]]=orm.relationship(default_factory = list, back_populates='house', repr = False)
+    pupils: orm.Mapped[list['Pupil']]=orm.relationship(default_factory = list, back_populates='house', repr = False)
 
 class Subject(Base):
     __tablename__ = 'subject'
 
     subject_id: orm.Mapped[int] = orm.mapped_column(init = False, primary_key=True)
     subject_name: orm.Mapped[str] = orm.mapped_column()
-    pupils: orm.Mapped[list[Pupil]]=orm.relationship(default_factory = list, secondary = 'linkSubjectPupil', back_populates='subjects', repr=False)
+    pupils: orm.Mapped[list['Pupil']]=orm.relationship(default_factory = list, secondary = 'linkSubjectPupil', back_populates='subjects', repr=False)
 
 class linkSubjectPupil(Base):
     __tablename__ = 'linkSubjectPupil'
 
-    pupil_id: orm.Mapped[int] = orm.mapped_column(sqlalchemy.ForeignKey('pupil.pupil_id'), init=False, repr=False)
-    subject_id: orm.Mapped[int] = orm.mapped_column(sqlalchemy.ForeignKey('subject.subject_id'), init=False, repr=False)
+    pupil_id: orm.Mapped[int] = orm.mapped_column(sqlalchemy.ForeignKey('pupil.pupil_id'), primary_key=True)
+    subject_id: orm.Mapped[int] = orm.mapped_column(sqlalchemy.ForeignKey('subject.subject_id'),primary_key=True)
 
 
 

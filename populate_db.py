@@ -20,10 +20,10 @@ with (orm.Session(engine)) as session:
 
 
     # create pupil as objects - these are records
-    pupil_Th = model.Pupil(first_name = 'Teo', last_name = 'Hadjiniklov', house = h1, subject = ["Further Maths", "Maths", "Philosophy", "Computer Science"])
-    pupil_Rc = model.Pupil(first_name='Ryan', last_name='Chan', house = h2, subject = ["Further Maths", "Maths", "Physics", "Computer Science"])
-    pupil_Lk = model.Pupil(first_name='Loveen', last_name='Kishore', house = h1, subject = ["Further Maths", "Maths", "Philosophy", "Computer Science"])
-    pupil_Ad = model.Pupil(first_name='Arthur', last_name='Dunno', house = h3, subject = ["Further Maths", "Maths", "Physics", "Computer Science"])
+    pupil_Th = model.Pupil(first_name = 'Teo', last_name = 'Hadjiniklov', house = h1)
+    pupil_Rc = model.Pupil(first_name='Ryan', last_name='Chan', house = h2)
+    pupil_Lk = model.Pupil(first_name='Loveen', last_name='Kishore', house = h1)
+    pupil_Ad = model.Pupil(first_name='Arthur', last_name='Dunno', house = h3)
 
     # add pupils to session (db)
     session.add(pupil_Th)
