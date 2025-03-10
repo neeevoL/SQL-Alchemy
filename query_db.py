@@ -18,3 +18,10 @@ with (orm.Session(engine)) as session:
     for house in houses:
         print(house.house_name)
 
+    print("\nGet the ORM object for maths\n")
+    maths_qry = (sqlalchemy.select(model.Subject).where(model.Subject.name == "Mathematics"))
+    maths = session.scalar(maths_qry)
+    print(maths)
+
+    print(\n)
+

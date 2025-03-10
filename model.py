@@ -43,5 +43,9 @@ class linkSubjectPupil(Base):
     pupil_id: orm.Mapped[int] = orm.mapped_column(sqlalchemy.ForeignKey('pupil.pupil_id'), primary_key=True)
     subject_id: orm.Mapped[int] = orm.mapped_column(sqlalchemy.ForeignKey('subject.subject_id'),primary_key=True)
 
+#class Library(Base):
+    #__tablename__ = 'library'
+
+
 
 
